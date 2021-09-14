@@ -123,6 +123,8 @@ const processEvent = async (event, say, client, body) => {
                             participants += ',';
                         }
                     });
+                } else {
+                    participants += 'None'
                 }
                 
                 
