@@ -108,6 +108,8 @@ const processEvent = async (event, say, client, body) => {
         const responseJSON = await response.json();
         const eventList = responseJSON['events'];
         
+        console.log(eventList);
+
         let blockObject = [];
         
         if (eventList.length >= 1) {
