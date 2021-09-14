@@ -128,12 +128,15 @@ const processEvent = async (event, say, client, body) => {
                         "text": `${event.title}`
                     }
                 }
+
+                const startTime = new Date(event.start).toLocaleTimeString();
+                const endTime = new Date(event.end).toLocaleDateString();
                 
                 const eventDetails = {
                     "type": "section",
                     "text": {
                         "type": "mrkdwn",
-                        "text": `*- Date:* ${new Date(event.start).toLocaleDateString()}\n*- Time:* ${new Date(event.start).toLocaleTimeString()} to ${new Date(event.end).toLocaleTimeString()}\n*- Participants:* ${participants}`
+                        "text": `*- Date:* ${new Date(event.start).toLocaleDateString()}\n*- Time:* ${startTime} to ${endTime}\n*- Participants:* ${participants}`
                     }
                 }
                 
