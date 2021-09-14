@@ -129,8 +129,8 @@ const processEvent = async (event, say, client, body) => {
                     }
                 }
 
-                const startTime = new Date(event.start).toLocaleTimeString();
-                const endTime = new Date(event.end).toLocaleDateString();
+                const startTime = new Date(event.start).toLocaleTimeString('en-US', { timeZone: 'America/New_York' });
+                const endTime = new Date(event.end).toLocaleTimeString('en-US', { timeZone: 'America/New_York' });
                 
                 const eventDetails = {
                     "type": "section",
