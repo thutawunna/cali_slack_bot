@@ -116,12 +116,15 @@ const processEvent = async (event, say, client, body) => {
             eventList.forEach(event => {
                 let participants = '';
                 
-                event.participants.forEach(person => {
-                    participants += person;
-                    if (person != event.participants[event.participants.length -1]) {
-                        participants += ',';
-                    }
-                });
+                if (event.participants) {
+                    event.participants.forEach(person => {
+                        participants += person;
+                        if (person != event.participants[event.participants.length -1]) {
+                            participants += ',';
+                        }
+                    });
+                }
+                
                 
                 const eventTitle = {
                     "type": "header",
