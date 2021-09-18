@@ -2,7 +2,6 @@ require('dotenv').config();
 
 const { WebClient, LogLevel } = require('@slack/web-api');
 const { App } = require("@slack/bolt");
-const SessionService = require('../services/SessionService');
 
 const { Wit, log } = require('node-wit');
 
@@ -12,8 +11,6 @@ const witClient = new Wit({
     accessToken: process.env.WIT_TOKEN,
     // logger: new log.Logger(log.DEBUG)
 });
-
-const sessionService = new SessionService();
 
 const client = new WebClient(process.env.SLACK_TOKEN, {
     logLevel: LogLevel.DEBUG
@@ -300,19 +297,6 @@ const handleCancelEvent = async ( extractedEntities, say, userID ) => {
 }
 
 const handleMessage = async (event, say, client, body) => {
-    const sessionId = createSessionId(event.channel, event.user, event.thread_ts || event.ts);
-    let session = sessionService.get(sessionId);
-    if (!session) {
-        session = sessionService.create(sessionId);
-        session.context = {
-            slack: {
-                channel: event.channel,
-                user: event.user,
-                thread_ts: event.thread_ts || event.ts
-            },
-        };
-    }
-    // console.log(session);
     
     let action = await processEvent(session, event, say, client, body);
     
