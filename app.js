@@ -5,8 +5,6 @@ const { App } = require("@slack/bolt");
 
 const { Wit, log } = require('node-wit');
 
-const { processDateTimeString } =require('../src/helpers');
-
 const witClient = new Wit({
     accessToken: process.env.WIT_TOKEN,
     // logger: new log.Logger(log.DEBUG)
