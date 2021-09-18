@@ -253,6 +253,8 @@ const handleCancelEvent = async ( extractedEntities, say, userID ) => {
             
             const eventStartTime = new Date(event.start);
 
+            const meetingTime_Locale = eventStartTime.toLocaleString('en-US', { timeZone: 'America/New_York' });
+
             console.log(`Event: ${event}`)
             await say({
                 "blocks": [
@@ -260,7 +262,7 @@ const handleCancelEvent = async ( extractedEntities, say, userID ) => {
                         "type": "section",
                         "text": {
                             "type": "mrkdwn",
-                            "text": `*Would you like to cancel this event?* \n\n*Appointment Date:* ${eventStartTime.toLocaleString()}\n*Appointment Type:* ${event.title}\n*Participants:* ${event.participants || 'None'}`
+                            "text": `*Would you like to cancel this event?* \n\n*Appointment Date:* ${meetingTime_Locale}\n*Appointment Type:* ${event.title}\n*Participants:* ${event.participants || 'None'}`
                         }
                     },
                     {
