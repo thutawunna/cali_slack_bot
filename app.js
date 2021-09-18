@@ -296,7 +296,7 @@ const handleCancelEvent = async ( extractedEntities, say, userID ) => {
 
 const handleMessage = async (event, say, client, body) => {
     
-    let action = await processEvent(session, event, say, client, body);
+    let action = await processEvent(event, say, client, body);
     
 }
 
