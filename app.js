@@ -193,7 +193,7 @@ const handleCreateEvent = async ( extractedEntities, say ) => {
                         "type": "section",
                         "text": {
                             "type": "mrkdwn",
-                            "text": `*Please confirm appointment details* \n\n*Appointment Date:* ${meetingTimeLocale}\n*Appointment Type:* ${meetingDescription}\n*Participants:* ${participants}`
+                            "text": `*Please confirm appointment details* \n\n*Appointment Date:* ${meetingTime_Locale}\n*Appointment Type:* ${meetingDescription}\n*Participants:* ${participants}`
                         }
                     },
                     {
