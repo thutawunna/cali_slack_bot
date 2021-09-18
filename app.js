@@ -185,13 +185,15 @@ const handleCreateEvent = async ( extractedEntities, say ) => {
                 participants = 'None'
             }
 
+            const meetingTime_Locale = meetingTime.toLocaleString('en-US', { timeZone: 'America/New_York' });
+
             await say({
                 "blocks": [
                     {
                         "type": "section",
                         "text": {
                             "type": "mrkdwn",
-                            "text": `*Please confirm appointment details* \n\n*Appointment Date:* ${meetingTime.toLocaleString({ timeZone: 'America/New_York' })}\n*Appointment Type:* ${meetingDescription}\n*Participants:* ${participants}`
+                            "text": `*Please confirm appointment details* \n\n*Appointment Date:* ${meetingTimeLocale}\n*Appointment Type:* ${meetingDescription}\n*Participants:* ${participants}`
                         }
                     },
                     {
