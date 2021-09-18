@@ -120,12 +120,15 @@ const processEvent = async (event, say, client, body) => {
                             "text": `${event.title}`
                         }
                     }
+
+                    const startTime = new Date(event.start).toLocaleTimeString('en-US', { timeZone: 'America/New_York' });
+                    const endTime = new Date(event.start).toLocaleTimeString('en-US', { timeZone: 'America/New_York' });
                     
                     const eventDetails = {
                         "type": "section",
                         "text": {
                             "type": "mrkdwn",
-                            "text": `*- Date:* ${new Date(event.start).toLocaleDateString()}\n*- Time:* ${new Date(event.start).toLocaleTimeString()} to ${new Date(event.end).toLocaleTimeString()}\n*- Participants:* ${participants}`
+                            "text": `*- Date:* ${new Date(event.start).toLocaleDateString()}\n*- Time:* ${startTime} to ${endTime}\n*- Participants:* ${participants}`
                         }
                     }
                     
@@ -188,7 +191,7 @@ const handleCreateEvent = async ( extractedEntities, say ) => {
                         "type": "section",
                         "text": {
                             "type": "mrkdwn",
-                            "text": `*Please confirm appointment details* \n\n*Appointment Date:* ${meetingTime.toLocaleString()}\n*Appointment Type:* ${meetingDescription}\n*Participants:* ${participants}`
+                            "text": `*Please confirm appointment details* \n\n*Appointment Date:* ${meetingTime.toLocaleString({ timeZone: 'America/New_York' })}\n*Appointment Type:* ${meetingDescription}\n*Participants:* ${participants}`
                         }
                     },
                     {
