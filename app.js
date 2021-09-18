@@ -21,7 +21,7 @@ const app = new App({
     socketMode: true,
 });
 
-const processEvent = async (session, event, say, client, body) => {
+const processEvent = async (event, say, client, body) => {
     try {
         const queryResult = await witClient.message(event.text);
         
