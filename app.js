@@ -293,6 +293,10 @@ const handleCancelEvent = async ( extractedEntities, say, userID ) => {
                     }
                 ]
             });
+        } else {
+            if (eventList.length == 0) {
+                await say(`You do not have a ${extractedEntities.event_type} scheduled at ${new Date(extractedEntities.datetime).toLocaleTimeString('en-US' , { timeZone: 'America/New_York' })}`);
+            }
         }
 
     } catch (error) {
